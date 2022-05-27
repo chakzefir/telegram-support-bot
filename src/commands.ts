@@ -84,13 +84,13 @@ function closeCommand(bot, ctx) {
     }
   });}
   // Get open tickets for any maintained label
-  let replyText = ctx.message.reply_to_message.text;
-  if (replyText == undefined) {
-    replyText = ctx.message.reply_to_message.caption;
-  }
+  // let replyText = ctx.message.reply_to_message.text;
+  // if (replyText == undefined) {
+  //   replyText = ctx.message.reply_to_message.caption;
+  // }
   // Ticket ID
-  const ticketId = replyText.match(new RegExp('#T' + '(.*)' + ' ' +
-                cache.config.language.from))[1];
+  const ticketId = ctx.message.text.match(new RegExp('#T' + '(.*)' + ' ' +
+    cache.config.language.from))[1];
   // get userid from ticketid
   db.open(function(tickets) {
     if (tickets == undefined) {
